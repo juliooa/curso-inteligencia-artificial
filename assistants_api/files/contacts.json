@@ -1,0 +1,89 @@
+{
+  "contacts": [
+    {
+      "name": "Susan Johnson",
+      "address": "123 Family Lane, Happyville, CA 98765",
+      "phone": "(555) 123-4567"
+    },
+    {
+      "name": "Robert Smith",
+      "address": "456 Parent Street, Caretown, NY 54321",
+      "phone": "(555) 987-6543"
+    },
+    {
+      "name": "Emily Davis",
+      "address": "789 Love Avenue, Bliss City, TX 12345",
+      "phone": "(555) 234-5678"
+    },
+    {
+      "name": "Alex Turner",
+      "address": "987 Fun Street, Joyville, FL 67890",
+      "phone": "(555) 876-5432"
+    },
+    {
+      "name": "Jessica White",
+      "address": "654 Laughter Lane, Happtown, AZ 34567",
+      "phone": "(555) 765-4321"
+    },
+    {
+      "name": "David Miller",
+      "address": "321 Office Road, Worksville, WA 56789",
+      "phone": "(555) 234-5678"
+    },
+    {
+      "name": "Sarah Johnson",
+      "address": "876 Career Street, Profitsburg, OR 45678",
+      "phone": "(555) 345-6789"
+    },
+    {
+      "name": "Brian Anderson",
+      "address": "543 Neighborly Avenue, Friendlyville, NV 78901",
+      "phone": "(555) 456-7890"
+    },
+    {
+      "name": "Olivia Green",
+      "address": "210 Community Lane, Socialtown, GA 23456",
+      "phone": "(555) 567-8901"
+    },
+    {
+      "name": "Jason Taylor",
+      "address": "789 Dormitory Street, Collegeland, MI 12345",
+      "phone": "(555) 678-9012"
+    },
+    {
+      "name": "Rachel Clark",
+      "address": "432 Fitness Lane, Healthville, IL 56789",
+      "phone": "(555) 789-0123"
+    },
+    {
+      "name": "Kevin Brown",
+      "address": "567 Family Road, Relativeville, CO 67890",
+      "phone": "(555) 890-1234"
+    },
+    {
+      "name": "Grace Taylor",
+      "address": "876 Literary Lane, Bookworm City, TX 90123",
+      "phone": "(555) 901-2345"
+    },
+    {
+      "name": "Carlos Ramirez",
+      "address": "109 Adventure Street, Wanderlust City, CA 23456",
+      "phone": "(555) 123-7890"
+    },
+    {
+      "name": "Amanda Lee",
+      "address": "543 Byte Avenue, Techtopia, NY 34567",
+      "phone": "(555) 678-9012"
+    },
+    {
+      "name": "Robert Smith (Dad)",
+      "address": "456 Parent Street, Caretown, NY 54321",
+      "phone": "(555) 987-6543"
+    },
+    {
+      "name": "Susan Johnson (Mom)",
+      "address": "123 Family Lane, Happyville, CA 98765",
+      "phone": "(555) 123-4567"
+    }
+  ]
+}
