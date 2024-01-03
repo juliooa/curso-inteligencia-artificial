@@ -2,7 +2,7 @@
 from langchain.llms.openai import OpenAI
 from langchain.prompts import PromptTemplate
 
-llm = OpenAI(openai_api_key='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')
+llm = OpenAI(openai_api_key='TU_API_KEY')
 
 SYSTEM_PROMPT = '''
 Eres un asistente de servicio al cliente de un banco. 

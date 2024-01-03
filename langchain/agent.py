@@ -5,7 +5,7 @@ from langchain.agents import AgentType
 import langchain
 
 llm = ChatOpenAI(
-    openai_api_key="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", 
+    openai_api_key="TU_API_KEY", 
     model="gpt-3.5-turbo"
     )
 

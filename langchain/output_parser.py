@@ -2,7 +2,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.output_parsers import ResponseSchema, StructuredOutputParser
 
-chat = ChatOpenAI(openai_api_key= "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")
+chat = ChatOpenAI(openai_api_key= "TU_API_KEY")
 
 SYSTEM_PROMPT_TEMPLATE = '''
 Te voy a entregar un review de un cliente que compró la aspiradora {product_name}. \

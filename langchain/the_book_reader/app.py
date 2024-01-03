@@ -27,7 +27,7 @@ def main():
             query = st.text_input("Pregúntame algo sobre el libro")
             if query:
                 result_docs = vectordb.similarity_search(query, k=3)
-                llm = OpenAI(openai_api_key="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")
+                llm = OpenAI(openai_api_key="TU_API_KEY")
                 chain = load_qa_chain(llm, verbose=True)
                 with get_openai_callback() as cost:
                     response = chain.run(input_documents=result_docs, question=query, verbose=True)

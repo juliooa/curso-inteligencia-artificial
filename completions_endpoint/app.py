@@ -2,7 +2,7 @@ import json
 import openai
 
 def complete(text):
-    openai.api_key = "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"
+    openai.api_key = "TU_API_KEY"
     completion = openai.Completion.create(
         model="gpt-3.5-turbo-instruct",
         prompt='''

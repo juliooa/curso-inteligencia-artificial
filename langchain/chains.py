@@ -4,7 +4,7 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain, SimpleSequentialChain
 
 
-llmOpenAI = ChatOpenAI(openai_api_key="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")
+llmOpenAI = ChatOpenAI(openai_api_key="TU_API_KEY")
 
 prompt1 = ChatPromptTemplate.from_template(
     "Sugiereme un nombre para una empresa \

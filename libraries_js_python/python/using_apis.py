@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = "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"
+openai.api_key = "TU_API_KEY"
 completion = openai.Completion.create(
     model="text-davinci-003",
     prompt="Saluda a los estudiantes del curso de IA",

@@ -7,7 +7,7 @@ from langchain.chains.router.llm_router import RouterOutputParser, LLMRouterChai
 from langchain.chains.router import MultiPromptChain
 
 llmOpenAI = ChatOpenAI(
-    openai_api_key="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", 
+    openai_api_key="TU_API_KEY", 
     model='gpt-3.5-turbo')
 
 sales_prompt = '''

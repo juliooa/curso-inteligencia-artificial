@@ -7,7 +7,7 @@ export type Message = {
 
 export async function getCompletion(messages: Message[]) {
 	const openai = new OpenAI({
-		apiKey: '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'
+		apiKey: 'TU_API_KEY'
 	});
 
 	console.log(messages);

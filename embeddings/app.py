@@ -112,7 +112,7 @@ for index in range(len(palabras)):
 
 chroma_client = chromadb.Client()
 openai_ef = embedding_functions.OpenAIEmbeddingFunction(
-    api_key="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",
+    api_key="TU_API_KEY",
     model_name="text-embedding-ada-002")
 
 

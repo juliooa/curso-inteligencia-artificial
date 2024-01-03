@@ -58,7 +58,7 @@ La información es la siguiente:
 print(SYSTEM_PROMPT)
 
 print("Conectando a OpenAI")
-openai.api_key = "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"
+openai.api_key = "TU_API_KEY"
 result = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[

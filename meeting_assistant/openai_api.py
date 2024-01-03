@@ -5,7 +5,7 @@ from operational import calculate_cost, get_tokens_number
 CONTEXT_WINDOW_GPT3_5_TURBO = 4097
 GPT3_5_TURBO = "gpt-3.5-turbo"
 
-openai.api_key = "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"
+openai.api_key = "TU_API_KEY"
 
 def send_message(message, system_message):
 

@@ -3,7 +3,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
 
 
-chatModel = ChatOpenAI(openai_api_key='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')
+chatModel = ChatOpenAI(openai_api_key='TU_API_KEY')
 
 messages = [
     SystemMessage(content="Tu eres un traductor de español a ingles"),
