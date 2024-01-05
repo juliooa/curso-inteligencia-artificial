@@ -1,7 +1,7 @@
-'''
+"""
 Crear embeddings para las palabras más comunes del español, y luego
 buscar las palabras similares a una palabra dada.
-'''
+"""
 import chromadb
 from chromadb.utils import embedding_functions
 
@@ -103,7 +103,7 @@ palabras = [
     "peligro",
     "oportunidad",
     "sueño",
-    "amor"
+    "amor",
 ]
 
 ids = []
@@ -113,12 +113,18 @@ for index in range(len(palabras)):
 chroma_client = chromadb.Client()
 openai_ef = embedding_functions.OpenAIEmbeddingFunction(
     api_key="TU_API_KEY",
-    model_name="text-embedding-ada-002")
+    model_name="text-embedding-ada-002",
+)
 
 
-words_collection = chroma_client.create_collection(name="palabras", embedding_function=openai_ef)
-words_collection.add(documents=palabras, ids=ids,)
+words_collection = chroma_client.create_collection(
+    name="palabras", embedding_function=openai_ef
+)
+words_collection.add(
+    documents=palabras,
+    ids=ids,
+)
 
 result = words_collection.query(query_texts="el mejor amigo del hombre", n_results=5)
-print(type(result['documents'][0]))
-print(result['documents'][0])
+print(type(result["documents"][0]))
+print(result["documents"][0])
