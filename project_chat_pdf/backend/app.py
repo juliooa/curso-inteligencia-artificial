@@ -2,13 +2,14 @@ import os
 import uuid
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
-
+from flask_cors import CORS
 from embeddings import create_embeddings, get_documents
 from llm import query_llm
 
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
 chatbot_status = {}
 
