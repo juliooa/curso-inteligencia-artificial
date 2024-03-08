@@ -15,7 +15,6 @@ chatbot_status = {}
 
 @app.route('/build_chatbot', methods=['POST'])
 def build_chatbot():
-    #recibir un pdf
     if 'file' not in request.files:
         return jsonify({'error': 'No file found'}), 400
 
