@@ -16,7 +16,7 @@
 		processing = false;
 		let result = await response.json();
 		if (result) {
-			goto('/ask_bot/' + result.id);
+			goto('/ask_bot/' + result.chatbot_id);
 		}
 	}
 </script>
