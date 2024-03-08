@@ -9,7 +9,7 @@
 
 	async function queryLLM() {
 		asking = true;
-		const response = await fetch(`${PUBLIC_BACKEND_URL}/ask/${chatbot_id}`, {
+		const response = await fetch(`${PUBLIC_BACKEND_URL}/ask_chatbot/${chatbot_id}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
