@@ -20,15 +20,17 @@ def build_chatbot():
         return jsonify({'error': 'No file found'}), 400
 
     file = request.files['file']
-    file.save(os.path.join('pdf_files', file.filename))
+    if file:
+        file.save(os.path.join('pdf_files', file.filename))
 
-    chatbot_id = str(uuid.uuid4())
-    chatbot_status[chatbot_id] = {'status': 'Creating embeddings'}
-    create_embeddings(chatbot_id, file.filename)
+        chatbot_id = str(uuid.uuid4())
+        chatbot_status[chatbot_id] = {'status': 'Creating embeddings'}
+        create_embeddings(chatbot_id, file.filename)
 
-    chatbot_status[chatbot_id] = {'status': 'Embeddings ready'}
-
-    return jsonify({'chatbot_id': chatbot_id}), 201
+        chatbot_status[chatbot_id] = {'status': 'Embeddings ready'}
+        return jsonify({'chatbot_id': chatbot_id}), 201
+    else:
+        return jsonify({'error': 'No file found'}), 400
 
 @app.route('/ask_chatbot/<string:chatbot_id>', methods=['POST'])
 def ask_chatbot(chatbot_id):
