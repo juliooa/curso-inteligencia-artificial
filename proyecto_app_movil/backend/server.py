@@ -1,4 +1,5 @@
 import os
+import tempfile
 from dotenv import load_dotenv
 from flask_cors import CORS
 from flask import Flask, request, jsonify
@@ -17,11 +18,13 @@ def query():
 
     photo = request.files["photo"]
     if photo:
-        photos_dir = os.path.join("photos")
-        os.makedirs(photos_dir, exist_ok=True)
-        photo.save(os.path.join(photos_dir, photo.filename))
+        temp_dir = tempfile.gettempdir()
+        temp_file = os.path.join(temp_dir, photo.filename)
+        photo.save(temp_file)
 
-        answer = identify_food(os.path.join(photos_dir, photo.filename))
+        answer = identify_food(temp_file)
+
+        os.remove(temp_file)
 
         return jsonify({"answer": answer}), 200
     else:
@@ -29,4 +32,4 @@ def query():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
