@@ -1,0 +1,269 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Asistente Virtual con IA",
+    "description": "Esta es la documentación de la API del asistente virtual con IA, ayuda a gestionar tareas, eventos de calendario y enviar correos electrónicos.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://gpt-ai-assistant-phi-snowy.vercel.app",
+      "description": "production"
+    }
+  ],
+  "paths": {
+    "/tasks": {
+      "get": {
+        "summary": "Obtener tareas",
+        "description": "Obtener todas las tareas",
+        "operationId": "get_tasks",
+        "responses": {
+          "200": {
+            "description": "Lista de tareas",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GetTasksResponse" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "New Task",
+        "description": "Crea una nueva tarea, se requiere un nombre y una descripción.",
+        "operationId": "post_tasks",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/NewTaskPayload" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "type": "string", "title": "Response Post Tasks" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/{task_id}": {
+      "get": {
+        "summary": "Get Task",
+        "description": "Obtiene la tarea con el id especificado",
+        "operationId": "get_task_with_id",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Task Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/calendar": {
+      "get": {
+        "summary": "Query Calendar Events",
+        "description": "Obtiene todos los eventos del calendario",
+        "operationId": "get_calendar_events",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GetCalendarResponse" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "New Calendar Event",
+        "description": "Crea un nuevo evento en el calendario",
+        "operationId": "post_calendar_event",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Event" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email": {
+      "post": {
+        "summary": "Send Email",
+        "description": "Envía un email",
+        "operationId": "send_email",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SendEmailPayload" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "type": "string", "title": "Response Send Email" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Event": {
+        "properties": {
+          "name": { "type": "string", "title": "Name" },
+          "date": { "type": "string", "title": "Date" },
+          "location": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Location"
+          },
+          "description": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Description"
+          }
+        },
+        "type": "object",
+        "required": ["name", "date"],
+        "title": "Event"
+      },
+      "GetCalendarResponse": {
+        "properties": {
+          "events": {
+            "items": { "$ref": "#/components/schemas/Event" },
+            "type": "array",
+            "title": "Events"
+          }
+        },
+        "type": "object",
+        "required": ["events"],
+        "title": "GetCalendarResponse"
+      },
+      "GetTasksResponse": {
+        "properties": {
+          "tasks": {
+            "items": { "$ref": "#/components/schemas/Task" },
+            "type": "array",
+            "title": "Tasks"
+          }
+        },
+        "type": "object",
+        "required": ["tasks"],
+        "title": "GetTasksResponse"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": { "$ref": "#/components/schemas/ValidationError" },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "NewTaskPayload": {
+        "properties": {
+          "name": { "type": "string", "title": "Name" },
+          "description": { "type": "string", "title": "Description" }
+        },
+        "type": "object",
+        "required": ["name", "description"],
+        "title": "NewTaskPayload"
+      },
+      "SendEmailPayload": {
+        "properties": {
+          "to": { "type": "string", "title": "To" },
+          "subject": { "type": "string", "title": "Subject" },
+          "body": { "type": "string", "title": "Body" }
+        },
+        "type": "object",
+        "required": ["to", "subject", "body"],
+        "title": "SendEmailPayload"
+      },
+      "Task": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "name": { "type": "string", "title": "Name" },
+          "status": { "type": "string", "title": "Status" }
+        },
+        "type": "object",
+        "required": ["id", "name", "status"],
+        "title": "Task"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": { "type": "string", "title": "Message" },
+          "type": { "type": "string", "title": "Error Type" }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
