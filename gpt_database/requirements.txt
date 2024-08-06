@@ -5,3 +5,4 @@ openai
 sqlalchemy
 python-dotenv
 psycopg2-binary
+mysql-connector-python

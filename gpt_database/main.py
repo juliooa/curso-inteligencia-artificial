@@ -7,8 +7,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+from db_providers.mysql_db import MySqlDatabase
 import llm
-import database
+from db_providers.postgres_db import PostgresDatabase
 
 
 logger = logging.getLogger(__name__)
@@ -34,15 +35,17 @@ class PostHumanQueryResponse(BaseModel):
 )
 async def human_query(payload: PostHumanQueryPayload):
 
+    database = MySqlDatabase()
+
     # Transforma la pregunta a sentencia SQL
-    sql_query = await llm.human_query_to_sql(payload.human_query)
+    sql_query = await llm.human_query_to_sql(payload.human_query, database)
 
     if not sql_query:
         return {"error": "Falló la generación de la consulta SQL"}
     result_dict = json.loads(sql_query)
 
     # Hace la consulta a la base de datos
-    result = await database.query(result_dict["sql_query"])
+    result = database.query(result_dict["sql_query"])
 
     # Transforma la respuesta SQL a un formato más humano
     answer = await llm.build_answer(result, payload.human_query)

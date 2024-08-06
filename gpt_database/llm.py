@@ -2,12 +2,12 @@ import os
 from typing import Any
 import openai
 
-import database
+from db_providers.database import BaseDatabase
 
 openai.api_key = os.getenv("OPEN_AI_API_KEY")
 
 
-async def human_query_to_sql(human_query: str):
+async def human_query_to_sql(human_query: str, database: BaseDatabase):
 
     # Obtenemos el esquema de la base de datos
     database_schema = database.get_schema()
@@ -27,6 +27,14 @@ async def human_query_to_sql(human_query: str):
     <schema>
     {database_schema}
     </schema>
+    El status se define por números que significan lo siguiente:
+    Cancelada=20
+    Completada=10
+    Pendiente=30
+
+    Los campos de la tabla orders significan:
+    - oid: El identificador único de la orden, o el order id
+    - cid: El identificador único del cliente, o el customer id
     Today is {current_date}
     """
     user_message = human_query
